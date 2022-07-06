@@ -1,19 +1,19 @@
 {
-    "name": "schema_migration_replicator",
-    "config": {
-      "connector.class": "io.confluent.connect.replicator.ReplicatorSourceConnector",
-      "topic.regex": "datagen_*|_schemas",
-      "topic.rename.format": "${topic}",
-      "key.converter": "io.confluent.connect.replicator.util.ByteArrayConverter",
-      "value.converter": "io.confluent.connect.replicator.util.ByteArrayConverter",
-      "src.kafka.bootstrap.servers": "srcBroker:19092",
-      "src.consumer.interceptor.classes": "io.confluent.monitoring.clients.interceptor.MonitoringConsumerInterceptor",
-      "src.consumer.confluent.monitoring.interceptor.bootstrap.servers": "srcBroker:19092",
-      "src.kafka.timestamps.topic.replication.factor": 1,
-      "src.kafka.timestamps.producer.interceptor.classes": "io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor",
-      "src.kafka.timestamps.producer.confluent.monitoring.interceptor.bootstrap.servers": "srcBroker:19092",
-      "dest.kafka.bootstrap.servers": "destBroker:29092",
-      "tasks.max": "1",
-      "confluent.topic.replication.factor": "1"
-    }
+  "name": "schema_migration_replicator",
+  "config": {
+    "connector.class": "io.confluent.connect.replicator.ReplicatorSourceConnector",
+    "topic.regex": "datagen_*|_schemas",
+    "topic.rename.format": "${topic}",
+    "key.converter": "io.confluent.connect.replicator.util.ByteArrayConverter",
+    "value.converter": "io.confluent.connect.replicator.util.ByteArrayConverter",
+    "src.kafka.bootstrap.servers": "srcBroker:19092",
+    "src.consumer.interceptor.classes": "io.confluent.monitoring.clients.interceptor.MonitoringConsumerInterceptor",
+    "src.consumer.confluent.monitoring.interceptor.bootstrap.servers": "srcBroker:19092",
+    "src.kafka.timestamps.topic.replication.factor": 1,
+    "src.kafka.timestamps.producer.interceptor.classes": "io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor",
+    "src.kafka.timestamps.producer.confluent.monitoring.interceptor.bootstrap.servers": "srcBroker:19092",
+    "dest.kafka.bootstrap.servers": "destBroker:29092",
+    "tasks.max": "1",
+    "confluent.topic.replication.factor": "1"
   }
+}

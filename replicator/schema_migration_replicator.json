@@ -1,14 +1,14 @@
 {
-    "name": "schema_migration_replicator",
-    "config": {
-      "connector.class": "io.confluent.connect.replicator.ReplicatorSourceConnector",
-      "topic.whitelist": "_schemas",
-      "topic.rename.format": "${topic}",
-      "key.converter": "io.confluent.connect.replicator.util.ByteArrayConverter",
-      "value.converter": "io.confluent.connect.replicator.util.ByteArrayConverter",
-      "src.kafka.bootstrap.servers": "srcBroker:19092",
-      "dest.kafka.bootstrap.servers": "destBroker:29092",
-      "tasks.max": "1",
-      "confluent.topic.replication.factor": "1"
-    }
+  "name": "schema_migration_replicator",
+  "config": {
+    "connector.class": "io.confluent.connect.replicator.ReplicatorSourceConnector",
+    "topic.whitelist": "_schemas",
+    "topic.rename.format": "${topic}",
+    "key.converter": "io.confluent.connect.replicator.util.ByteArrayConverter",
+    "value.converter": "io.confluent.connect.replicator.util.ByteArrayConverter",
+    "src.kafka.bootstrap.servers": "srcBroker:19092",
+    "dest.kafka.bootstrap.servers": "destBroker:29092",
+    "tasks.max": "1",
+    "confluent.topic.replication.factor": "1"
   }
+}

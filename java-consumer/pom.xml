@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.github.ogomezso.java.consumer</groupId>
@@ -21,6 +20,7 @@
     <maven.compiler.target>11</maven.compiler.target>
     <kafka.version>3.0.1</kafka.version>
     <avro.version>1.11.0</avro.version>
+    <confluent.version>7.0.1</confluent.version>
   </properties>
   <dependencies>
     <dependency>
@@ -55,6 +55,11 @@
       <version>${kafka.version}</version>
     </dependency>
     <dependency>
+      <groupId>io.confluent</groupId>
+      <artifactId>timestamp-interceptor</artifactId>
+      <version>${confluent.version}</version>
+    </dependency>
+    <dependency>
       <groupId>org.apache.avro</groupId>
       <artifactId>avro</artifactId>
       <version>${avro.version}</version>
@@ -77,18 +82,9 @@
     <dependency>
       <groupId>io.confluent</groupId>
       <artifactId>kafka-avro-serializer</artifactId>
-      <version>7.0.1</version>
+      <version>${confluent.version}</version>
     </dependency>
   </dependencies>
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-databind</artifactId>
-        <version>2.13.3</version>        
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
   <build>
     <plugins>
       <plugin>

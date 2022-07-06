@@ -1,4 +1,3 @@
-appPort: 38081
 bootstrapServers: localhost:1092
 clientId: java-consumer
 groupId: java-cg

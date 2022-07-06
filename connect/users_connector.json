@@ -1,15 +1,15 @@
 {
-    "name": "datagen-users",
-    "config": {
-      "connector.class": "io.confluent.kafka.connect.datagen.DatagenConnector",
-      "kafka.topic": "datagen_users",
-      "quickstart": "users",
-      "key.converter": "org.apache.kafka.connect.storage.StringConverter",
-      "value.converter": "io.confluent.connect.avro.AvroConverter",
-      "value.converter.schema.registry.url": "http://srcSchema-registry:8081",
-      "value.converter.schemas.enable": "false",
-      "max.interval": 1000,
-      "iterations": 10000000,
-      "tasks.max": "1"
-    }
+  "name": "datagen-users",
+  "config": {
+    "connector.class": "io.confluent.kafka.connect.datagen.DatagenConnector",
+    "kafka.topic": "datagen_users",
+    "quickstart": "users",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "io.confluent.connect.avro.AvroConverter",
+    "value.converter.schema.registry.url": "http://srcSchema-registry:8081",
+    "value.converter.schemas.enable": "false",
+    "max.interval": 1000,
+    "iterations": 10000000,
+    "tasks.max": "1"
   }
+}

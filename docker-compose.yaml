@@ -1,14 +1,14 @@
 version: '3.8'
 services:
   srcZookeeper:
-    image: confluentinc/cp-zookeeper:7.0.1 
+    image: confluentinc/cp-zookeeper:7.0.1
     ports:
       - "2181:2181"
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
   srcBroker:
-    image: confluentinc/cp-server:7.0.1 
+    image: confluentinc/cp-server:7.0.1
     depends_on:
       - srcZookeeper
     ports:
@@ -31,7 +31,7 @@ services:
       CONFLUENT_METRICS_ENABLE: 'true'
       CONFLUENT_SUPPORT_CUSTOMER_ID: 'anonymous'
   srcSchema-registry:
-    image: confluentinc/cp-schema-registry:7.0.1 
+    image: confluentinc/cp-schema-registry:7.0.1
     depends_on:
       - srcBroker
     ports:
@@ -68,14 +68,14 @@ services:
       CONNECT_PLUGIN_PATH: "/usr/share/java,/usr/share/confluent-hub-components"
       CONNECT_LOG4J_LOGGERS: org.apache.zookeeper=ERROR,org.I0Itec.zkclient=ERROR,org.reflections=ERROR
   destZookeeper:
-    image: confluentinc/cp-zookeeper:7.0.1 
+    image: confluentinc/cp-zookeeper:7.0.1
     ports:
       - "2281:2281"
     environment:
       ZOOKEEPER_CLIENT_PORT: 2281
       ZOOKEEPER_TICK_TIME: 2000
   destBroker:
-    image: confluentinc/cp-server:7.0.1 
+    image: confluentinc/cp-server:7.0.1
     depends_on:
       - destZookeeper
     ports:
@@ -98,7 +98,7 @@ services:
       CONFLUENT_METRICS_ENABLE: 'true'
       CONFLUENT_SUPPORT_CUSTOMER_ID: 'anonymous'
   destSchema-registry:
-    image: confluentinc/cp-schema-registry:7.0.1 
+    image: confluentinc/cp-schema-registry:7.0.1
     depends_on:
       - srcBroker
     ports:
@@ -131,4 +131,14 @@ services:
       CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL: http://destSchema-registry:8082
       CONNECT_PLUGIN_PATH: "/usr/share/java,/usr/share/confluent-hub-components"
       CONNECT_LOG4J_LOGGERS: org.apache.zookeeper=ERROR,org.I0Itec.zkclient=ERROR,org.reflections=ERROR
-
+  java-consumer:
+    build:
+      context: ./java-consumer
+      dockerfile: Dockerfile
+    depends_on:
+      - srcBroker
+      - srcSchema-registry
+      - destBroker
+      - destSchema-registry
+      - connect
+      - replicator
