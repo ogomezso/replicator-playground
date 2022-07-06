@@ -1,0 +1,6 @@
+appPort: 38081
+bootstrapServers: srcBroker:19092
+clientId: java-consumer
+groupId: java-cg
+topic: datagen-users
+schemaRegistryUrl: http://srcSchema-registry:8081
