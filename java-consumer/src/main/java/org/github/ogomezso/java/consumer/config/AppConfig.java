@@ -10,4 +10,5 @@ public class AppConfig {
    private String groupId;
    private String topic;
    private String schemaRegistryUrl;
+   private String autoOffsetReset;
 }

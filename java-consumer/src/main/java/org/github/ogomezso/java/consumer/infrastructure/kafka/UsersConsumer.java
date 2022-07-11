@@ -7,6 +7,9 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.github.ogomezso.java.consumer.config.AppConfig;
 import org.github.ogomezso.java.consumer.infrastructure.model.Users;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class UsersConsumer {
 
   private final KafkaConsumer<String, Users> plainConsumer;
@@ -20,9 +23,7 @@ public class UsersConsumer {
       final ConsumerRecords<String, Users> consumerRecords = plainConsumer.poll(Duration.ofMillis(500));
 
       consumerRecords.forEach(record -> {
-        System.out.printf("Consumer Record:(%d, %s, %d, %d)\n",
-            record.key(), record.value(),
-            record.partition(), record.offset());
+        log.info("Record Consumed from partition: {} with offset: {} and value {}", record.partition(), record.offset(), record.value());
       });
     }
   }

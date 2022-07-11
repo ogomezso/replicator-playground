@@ -1,5 +1,6 @@
-bootstrapServers: localhost:1092
+bootstrapServers: localhost:9092
 clientId: java-consumer
 groupId: java-cg
-topic: datagen-users
+topic: datagen_users
+autoOffsetReset: latest
 schemaRegistryUrl: http://localhost:8081
