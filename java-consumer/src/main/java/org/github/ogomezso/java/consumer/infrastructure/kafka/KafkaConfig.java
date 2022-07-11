@@ -22,6 +22,8 @@ public class KafkaConfig {
   public static final String DESERIALIZATION_STRING_DESERIALIZER = "org.apache.kafka.common.serialization.StringDeserializer";
   public static final String DESERIALIZATION_AVRO_DESERIALIZER = "io.confluent.kafka.serializers.KafkaAvroDeserializer";
   public static final String INTERCEPTOR_CLASSES = "io.confluent.connect.replicator.offsets.ConsumerTimestampsInterceptor";
+  public static final String SCHEMA_REGISTRY_URL = "schema.registry.url";
+
   static KafkaConsumer<String, Users> createKafkaConsumer(AppConfig appConfig) {
 
     Properties props = new Properties();
@@ -31,6 +33,7 @@ public class KafkaConfig {
     props.put(KEY_DESERIALIZER_CLASS_CONFIG, DESERIALIZATION_STRING_DESERIALIZER);
     props.put(VALUE_DESERIALIZER_CLASS_CONFIG, DESERIALIZATION_AVRO_DESERIALIZER);
     props.put(INTERCEPTOR_CLASSES_CONFIG, INTERCEPTOR_CLASSES);
+    props.put(SCHEMA_REGISTRY_URL, appConfig.getSchemaRegistryUrl());
 
     final KafkaConsumer<String, Users> consumer = new KafkaConsumer<>(props);
     consumer.subscribe(Collections.singletonList(appConfig.getTopic()));
